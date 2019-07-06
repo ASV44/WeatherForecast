@@ -15,17 +15,29 @@ class ForecastViewController: UIViewController {
     }
     
     private func setInteractor() {
-        interactor = ForecastInteractor(view: self)
+        interactor = ForecastInteractor(apiService: APICommunication())
+        interactor.bind(view: self)
     }
 
     private func registerNibs() {
         tableView.register(ForecastCell.nib, forCellReuseIdentifier: ForecastCell.identifier)
     }
 
+    @IBAction func searchAction(_ sender: UIButton) {
+        guard let city = textField.text  else { return }
+        interactor.fetchCurrentWeatherForecast(for: city)
+    }
 }
 
 extension ForecastViewController: ForecastView {
+    func onError(error: Errors.Error) {
+        print(error.description)
+    }
     
+    func reloadData() {
+        textField.text = ""
+        tableView.reloadData()
+    }
 }
 
 extension ForecastViewController: UITableViewDataSource {
@@ -36,6 +48,7 @@ extension ForecastViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ForecastCell.identifier,
                                                        for: indexPath) as? ForecastCell else { return UITableViewCell() }
+        cell.configure(with: interactor.cellModels[indexPath.row])
         
         return cell
     }

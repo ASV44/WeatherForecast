@@ -28,7 +28,7 @@ final class RequestExecutor {
             let request = AF.request(url,
                                      method: method,
                                      parameters: parameters,
-                                     encoding: JSONEncoding.default,
+                                     encoding: URLEncoding.queryString,
                                      headers: headers)
                 .validate().responseDecodable { (response: DataResponse<T>)  in
                     switch response.result {
