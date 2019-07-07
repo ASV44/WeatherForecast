@@ -21,6 +21,7 @@ class ForecastViewController: UIViewController {
 
     private func registerNibs() {
         tableView.register(ForecastCell.nib, forCellReuseIdentifier: ForecastCell.identifier)
+        tableView.register(ForecastHeaderView.nib, forHeaderFooterViewReuseIdentifier: ForecastHeaderView.identifier)
     }
 
     @IBAction func searchAction(_ sender: UIButton) {
@@ -32,6 +33,11 @@ class ForecastViewController: UIViewController {
 extension ForecastViewController: ForecastView {
     func onError(error: Errors.Error) {
         print(error.description)
+        textField.text = ""
+        let alert = UIAlertController(title: "Error", message: error.description, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
     func reloadData() {
@@ -41,16 +47,36 @@ extension ForecastViewController: ForecastView {
 }
 
 extension ForecastViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return interactor.sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return interactor.cellModels.count
+        let countrySection = interactor.sections[section]
+        return interactor.cellModels[countrySection]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ForecastCell.identifier,
                                                        for: indexPath) as? ForecastCell else { return UITableViewCell() }
-        cell.configure(with: interactor.cellModels[indexPath.row])
+        let countrySection = interactor.sections[indexPath.section]
+        guard let sectionCellModels = interactor.cellModels[countrySection] else { return UITableViewCell() }
+        cell.configure(with: sectionCellModels[indexPath.row])
         
         return cell
     }
+}
+
+extension ForecastViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ForecastHeaderView.identifier)
+        guard let header = view as? ForecastHeaderView else { return nil }
+        header.regionTitleLabel.text = interactor.sections[section]
+        
+        return header
+    }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
 }

@@ -13,28 +13,23 @@ class BaseInteractor<V> {
         self.view = view
     }
     
-    func execute<T>(_ observable: Observable<T>, _ onNext: @escaping (T) -> (), _ onError: @escaping (Error) -> ()) {
-        let scheduler = ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global())
-        let subscription = observable.subscribeOn(scheduler)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { data in
-                onNext(data)
-            }, onError: { error in
-                onError(error)
-            })
-        disposeBag.insert(subscription)
-    }
-    
     func onError(error: Error) {
         guard let view = self.view as? BaseView,
               let exception = error as? Exception else { return }
         switch exception {
-        case .HTTP(let error):
-            view.onError(error: Errors.Error(message: error.localizedDescription))
+        case .HTTP(let error, let data):
+            view.onError(error: decodeApiError(from: data) ?? Errors.Error(message: error.localizedDescription))
             break
         case .NetworkConnection:
             view.onError(error: Errors.NETWORK_CONNECTION_ERROR)
             break
         }
+    }
+    
+    private func decodeApiError(from data: Data?) -> Errors.Error? {
+        guard let rawData = data,
+              let apiError = try? JSONDecoder().decode(Errors.Error.self, from: rawData) else { return nil }
+        
+        return apiError
     }
 }

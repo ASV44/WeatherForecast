@@ -16,7 +16,7 @@ final class WeatherIndex: Codable {
 
 final class WindIndex: Codable {
     var speed: Double
-    var degree: Double
+    var degree: Double?
     
     enum CodingKeys: String, CodingKey {
         case speed

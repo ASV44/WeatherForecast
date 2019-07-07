@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2BEF52C97625C7604C5DD486 /* Pods_ForecastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA9BA2F010C971A4C1B25B5 /* Pods_ForecastTests.framework */; };
 		4F7762FECE1814078DFDEE54 /* Pods_Forecast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4C9BF01BAA170538E5FCFE /* Pods_Forecast.framework */; };
+		D6409AAB22D26462008D8189 /* ForecastHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6409AAA22D26462008D8189 /* ForecastHeaderView.swift */; };
 		D64207D422CFDDA0003672E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64207D322CFDDA0003672E2 /* AppDelegate.swift */; };
 		D64207D622CFDDA0003672E2 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64207D522CFDDA0003672E2 /* ForecastViewController.swift */; };
 		D64207D922CFDDA0003672E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64207D722CFDDA0003672E2 /* Main.storyboard */; };
@@ -17,7 +18,7 @@
 		D64207E922CFDDA2003672E2 /* ForecastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64207E822CFDDA2003672E2 /* ForecastTests.swift */; };
 		D64207F422CFDDA2003672E2 /* ForecastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64207F322CFDDA2003672E2 /* ForecastUITests.swift */; };
 		D642080222CFE603003672E2 /* ForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D642080122CFE603003672E2 /* ForecastCell.xib */; };
-		D642080422CFE63A003672E2 /* ForecastHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D642080322CFE63A003672E2 /* ForecastHeaderCell.xib */; };
+		D642080422CFE63A003672E2 /* ForecastHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D642080322CFE63A003672E2 /* ForecastHeaderView.xib */; };
 		D642080722CFF18E003672E2 /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D642080622CFF18E003672E2 /* ForecastCell.swift */; };
 		D642080922CFF359003672E2 /* ForecastCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D642080822CFF359003672E2 /* ForecastCellModel.swift */; };
 		D642080B22CFFE55003672E2 /* ForecastInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D642080A22CFFE55003672E2 /* ForecastInteractor.swift */; };
@@ -64,6 +65,7 @@
 		BEA9BA2F010C971A4C1B25B5 /* Pods_ForecastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForecastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C46C0088FFB6F889ED6ABE /* Pods-ForecastUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForecastUITests.debug.xcconfig"; path = "Target Support Files/Pods-ForecastUITests/Pods-ForecastUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D30E8314FEB1410BB6C8F5EB /* Pods-Forecast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Forecast.debug.xcconfig"; path = "Target Support Files/Pods-Forecast/Pods-Forecast.debug.xcconfig"; sourceTree = "<group>"; };
+		D6409AAA22D26462008D8189 /* ForecastHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastHeaderView.swift; sourceTree = "<group>"; };
 		D64207D022CFDDA0003672E2 /* Forecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64207D322CFDDA0003672E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D64207D522CFDDA0003672E2 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +80,7 @@
 		D64207F322CFDDA2003672E2 /* ForecastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastUITests.swift; sourceTree = "<group>"; };
 		D64207F522CFDDA2003672E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D642080122CFE603003672E2 /* ForecastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastCell.xib; sourceTree = "<group>"; };
-		D642080322CFE63A003672E2 /* ForecastHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastHeaderCell.xib; sourceTree = "<group>"; };
+		D642080322CFE63A003672E2 /* ForecastHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastHeaderView.xib; sourceTree = "<group>"; };
 		D642080622CFF18E003672E2 /* ForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
 		D642080822CFF359003672E2 /* ForecastCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCellModel.swift; sourceTree = "<group>"; };
 		D642080A22CFFE55003672E2 /* ForecastInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastInteractor.swift; sourceTree = "<group>"; };
@@ -140,6 +142,15 @@
 				7C17AA1D56AE3C5E0E53BB1E /* Pods-ForecastUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D6409AA822D2643A008D8189 /* ForecastHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				D642080322CFE63A003672E2 /* ForecastHeaderView.xib */,
+				D6409AAA22D26462008D8189 /* ForecastHeaderView.swift */,
+			);
+			path = ForecastHeaderView;
 			sourceTree = "<group>";
 		};
 		D64207C722CFDDA0003672E2 = {
@@ -262,7 +273,6 @@
 				D6CA9C9722D00C06009902E1 /* Constants */,
 				D6CA9CA422D01BC8009902E1 /* Models */,
 				D64207D722CFDDA0003672E2 /* Main.storyboard */,
-				D642080322CFE63A003672E2 /* ForecastHeaderCell.xib */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -270,6 +280,7 @@
 		D6CA9CA822D01C21009902E1 /* Forecast */ = {
 			isa = PBXGroup;
 			children = (
+				D6409AA822D2643A008D8189 /* ForecastHeaderView */,
 				D642080522CFF178003672E2 /* ForecastCell */,
 				D64207D522CFDDA0003672E2 /* ForecastViewController.swift */,
 				D642080A22CFFE55003672E2 /* ForecastInteractor.swift */,
@@ -416,7 +427,7 @@
 				D642080222CFE603003672E2 /* ForecastCell.xib in Resources */,
 				D64207DE22CFDDA2003672E2 /* LaunchScreen.storyboard in Resources */,
 				D64207DB22CFDDA2003672E2 /* Assets.xcassets in Resources */,
-				D642080422CFE63A003672E2 /* ForecastHeaderCell.xib in Resources */,
+				D642080422CFE63A003672E2 /* ForecastHeaderView.xib in Resources */,
 				D64207D922CFDDA0003672E2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,6 +560,7 @@
 				D6CA9CA622D01BD7009902E1 /* Errors.swift in Sources */,
 				D64207D622CFDDA0003672E2 /* ForecastViewController.swift in Sources */,
 				D642080922CFF359003672E2 /* ForecastCellModel.swift in Sources */,
+				D6409AAB22D26462008D8189 /* ForecastHeaderView.swift in Sources */,
 				D6CA9C9622D00558009902E1 /* NetworkExceptions.swift in Sources */,
 				D642080722CFF18E003672E2 /* ForecastCell.swift in Sources */,
 				D64207D422CFDDA0003672E2 /* AppDelegate.swift in Sources */,

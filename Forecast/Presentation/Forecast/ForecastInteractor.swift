@@ -1,6 +1,7 @@
 final class ForecastInteractor: BaseInteractor<ForecastView> {
     private var apiService: APIService
-    var cellModels: [ForecastCellModel] = []
+    var cellModels: [String: [ForecastCellModel]] = [:]
+    var sections: [String] = []
     
     init(apiService: APIService) {
         self.apiService = apiService
@@ -10,11 +11,19 @@ final class ForecastInteractor: BaseInteractor<ForecastView> {
     func fetchCurrentWeatherForecast(for city: String) {
         apiService.getCurrentWeather(for: city)
             .onSuccess { [weak self] forecast in
-                self?.cellModels.append(ForecastCellModel(from: forecast))
+                self?.processResponse(for: forecast)
                 self?.view.reloadData()
             }.onFailure { [weak self] error in
                 self?.onError(error: error)
-            }
-            .run().disposed(by: disposeBag)
+            }.run().disposed(by: disposeBag)
+    }
+    
+    private func processResponse(for forecast: Forecast) {
+        var regionForecasts = cellModels[forecast.specification.country] ?? []
+        regionForecasts.removeAll { $0.city == forecast.name }
+        regionForecasts.insert(ForecastCellModel(from: forecast), at: 0)
+        cellModels[forecast.specification.country] = regionForecasts
+        sections.removeAll { $0 == forecast.specification.country }
+        sections.insert(forecast.specification.country, at: 0)
     }
 }

@@ -6,18 +6,8 @@ final class RequestExecutor {
                              with parameters: Parameters!,
                              method: HTTPMethod,
                              headers: HTTPHeaders? = nil) -> Observable<T> {
-        let request: Observable<T> = getRequest(to: url, with: parameters, method: method, headers: headers)
-        return execute(request)
-    }
-    
-    func execute<T>(_ request: Observable<T>) -> Observable<T> {
-        if !Reachability.isConnectedToNetwork() {
-            return Observable.error(Exception.NetworkConnection)
-        }
-        
-        return request.catchError { error in
-            return Observable.error(Exception.HTTP(error: error))
-        }
+        guard Reachability.isConnectedToNetwork() else { return Observable.error(Exception.NetworkConnection) }
+        return getRequest(to: url, with: parameters, method: method, headers: headers)
     }
     
     func getRequest<T: Codable>(to url: String,
@@ -36,7 +26,7 @@ final class RequestExecutor {
                         observer.onNext(value)
                         observer.onCompleted()
                     case .failure(let error):
-                        observer.onError(Exception.HTTP(error: error))
+                        observer.onError(Exception.HTTP(error: error, data: response.data))
                     }
             }
             request.resume()

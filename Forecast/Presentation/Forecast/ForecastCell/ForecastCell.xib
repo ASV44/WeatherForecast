@@ -95,12 +95,22 @@
                         </stackView>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDR-ZB-Wc7">
+                    <rect key="frame" x="0.0" y="89.5" width="375" height="0.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="92E-fc-EGr"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="FZx-Wo-SVK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="0ea-st-X5B"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="FZx-Wo-SVK" secondAttribute="bottom" id="6OH-Wl-ngZ"/>
+                <constraint firstAttribute="bottom" secondItem="MDR-ZB-Wc7" secondAttribute="bottom" id="KTe-Hn-Sr9"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FZx-Wo-SVK" secondAttribute="trailing" id="inJ-6O-kdP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MDR-ZB-Wc7" secondAttribute="trailing" id="n6l-5I-8VM"/>
+                <constraint firstItem="MDR-ZB-Wc7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qg8-r0-1rx"/>
                 <constraint firstItem="FZx-Wo-SVK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yNO-Lo-Zi2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -113,6 +123,7 @@
                 <outlet property="temperatureLabel" destination="uuN-05-wFS" id="ccS-PL-D2z"/>
                 <outlet property="windSpeedValueLabel" destination="vEq-Xf-nCp" id="b3o-UE-G1M"/>
             </connections>
+            <point key="canvasLocation" x="138.40000000000001" y="154.72263868065968"/>
         </view>
     </objects>
 </document>
