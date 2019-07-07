@@ -1,0 +1,42 @@
+[
+  {
+    "name": "London",
+    "cod": "GB"
+  },
+  {
+    "name": "Adelaide",
+    "cod": "AU"
+  },
+  {
+    "name": "Melbourne",
+    "cod": "AU"
+  },
+  {
+    "name": "Sydney",
+    "cod": "AU"
+  },
+  {
+    "name": "Brisbane",
+    "cod": "AU"
+  },
+  {
+    "name": "Perth",
+    "cod": "AU"
+  },
+  {
+    "name": "Paris",
+    "cod": "FR"
+  },
+  {
+    "name": "New York",
+    "cod": "US"
+  },
+  {
+    "name": "Toronto",
+    "cod": "CA"
+  },
+  {
+    "name": "Moscow",
+    "cod": "RU"
+  }
+]

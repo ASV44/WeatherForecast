@@ -11,12 +11,25 @@ class ForecastViewController: UIViewController {
         super.viewDidLoad()
 
         setInteractor()
+        subscribeToNotifications()
         registerNibs()
+        interactor.viewDidLoad()
     }
     
     private func setInteractor() {
         interactor = ForecastInteractor(apiService: APICommunication())
         interactor.bind(view: self)
+    }
+    
+    private func subscribeToNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(viewWillTerminate),
+                                               name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewWillTerminate),
+                                               name: UIApplication.willTerminateNotification, object: nil)
+    }
+    
+    @objc private func viewWillTerminate() {
+       interactor.viewWillTerminate()
     }
 
     private func registerNibs() {
@@ -78,5 +91,13 @@ extension ForecastViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+}
+
+extension ForecastViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchAction(searchButton)
+        textField.resignFirstResponder()
+        return true
     }
 }
